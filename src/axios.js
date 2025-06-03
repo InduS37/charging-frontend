@@ -1,7 +1,11 @@
+// src/axios.js
 import axios from 'axios';
+axios.post('/auth/login', {  })
+
+console.log("API Base URL:", import.meta.env.VITE_API_BASE_URL); // Debug
 
 const instance = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: import.meta.env.VITE_API_BASE_URL
 });
 
 instance.interceptors.request.use((config) => {
@@ -13,4 +17,3 @@ instance.interceptors.request.use((config) => {
 });
 
 export default instance;
-

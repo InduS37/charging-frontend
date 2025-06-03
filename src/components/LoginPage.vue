@@ -1,12 +1,22 @@
 <template>
-  <div class="login">
+  <div class="login-container">
     <h2>Login</h2>
-    <form @submit.prevent="handleLogin">
-      <input v-model="username" type="text" placeholder="Username" required />
-      <input v-model="password" type="password" placeholder="Password" required />
+    <form @submit.prevent="login">
+      <input
+        type="text"
+        v-model="username"
+        placeholder="Enter Username"
+        required
+      />
+      <input
+        type="password"
+        v-model="password"
+        placeholder="Enter Password"
+        required
+      />
       <button type="submit">Login</button>
     </form>
-    <p v-if="error">{{ error }}</p>
+    <p v-if="error" class="error">{{ error }}</p>
   </div>
 </template>
 
@@ -23,17 +33,19 @@ export default {
     };
   },
   methods: {
-    async handleLogin() {
+    async login() {
       try {
         const res = await axios.post('/auth/login', {
           username: this.username,
           password: this.password
         });
-        const token = res.data.token;
-        localStorage.setItem('token', token);
-        this.$router.push('/dashboard'); // Redirect to dashboard after login
+
+        localStorage.setItem('token', res.data.token);
+        this.$router.push('/dashboard');
       } catch (err) {
-        this.error = err.response?.data?.message || 'Login failed';
+        this.error =
+          err.response?.data?.message || 'Login failed. Please try again.';
+        console.error('Login error:', err);
       }
     }
   }
@@ -41,18 +53,36 @@ export default {
 </script>
 
 <style scoped>
-.login {
-  max-width: 300px;
-  margin: auto;
-  padding: 20px;
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 24px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
 input {
-  display: block;
-  margin: 10px 0;
   width: 100%;
-  padding: 8px;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 button {
-  padding: 8px 16px;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0056b3;
+}
+.error {
+  color: red;
+  margin-top: 10px;
 }
 </style>
