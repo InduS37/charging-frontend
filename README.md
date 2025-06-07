@@ -33,17 +33,27 @@ Password: indhu123
 ##📦 Project Setup (For Local Dev)
 npm install
 npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Create a .env file with:
 
-### Lints and fixes files
-```
-npm run lint
-```
+VITE_API_BASE_URL=http://localhost:5000/api     (for localhost)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+VITE_API_BASE_URL=//https://charging-backend-6.onrender.com/     (for render)
+
+📁 Folder Structure
+frontend/
+├── src/
+├── components/
+├── views/
+├── router/
+└── README.md ✅
+
+Frontend deployed on Vercel
+Backend deployed on Render
+Env variables configured on both platforms
+
+🧑‍💻 Author
+Indhu – B.Tech CSE Final Year
+GitHub: https://github.com/InduS37
+
+
