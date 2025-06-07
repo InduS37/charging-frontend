@@ -4,7 +4,7 @@ This is the frontend for the Charging Station Management System built using Vue.
 
 ## 🔗 Live URL
 
-🌐 [Live App][ https://charging-frontend-17-dgmcbc8v9-indhu-projects.vercel.app/]
+🌐 [Live App]
 🔐 Uses API: [https://charging-backend-6.onrender.com/]
 
 ## ✨ Features
